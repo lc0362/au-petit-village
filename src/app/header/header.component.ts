@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css'] // Corrected to 'styleUrls'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  
+  ngOnInit(): void {
+    this.initApp();
+  }
 
+  initApp(): void {
+    const hamburgerBtn = document.getElementById('hamburger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (hamburgerBtn && mobileMenu) {
+      const toggleMenu = () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+      };
+
+      hamburgerBtn.addEventListener('click', toggleMenu);
+      mobileMenu.addEventListener('click', toggleMenu);
+    }
+  }
 }

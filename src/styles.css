@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .section-min-height {
+        min-height:cal(100vh - 68px)
+    }
+}
+
+
+@font-face {
+    font-family: "Comfortaa";
+    src: url('./assets/fonts/Comfortaa-Regular.woff')
+}
+
+@font-face {
+    font-family: "Comfortaa-bold";
+    src: url('./assets/fonts/Comfortaa-Bold.woff')
+}
+
+@font-face {
+    font-family: "BubbleboddyNeue";
+    src: url('./assets/fonts/bubbleboddyneue-regular-trial.woff')
+}
+
+@font-face {
+    font-family: "BubbleboddyNeue-bold";
+    src: url('./assets/fonts/BubbleboddyNeue-Bold-Trial.woff')
+}
+
+
+:root {
+    --color-primary: #F9D0A3;
+    --color-secondary: #FDD90B;
+    --color-dark: #151217;
+    --color-accent: #DA001E;
+  }
+  body {
+    font-family: "Comfortaa", sans-serif;
+    background-color: var(--color-primary);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "BubbleboddyNeue", sans-serif;
+    
+  }
+
