@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "name": "Figurine Panoramix",
+        "description": "Figurine du druide Panoramix avec son chaudron magique. En résine peinte à la main.",
+        "price": 22.99,
+        "image": "assets/img/panoramix.jpg"
+      },
+      
+    {
+      "id": 2,
+      "name": "Figurine Obélix",
+      "description": "Figurine de Obélix, impatient d'aller combattre les romains. En résine peinte à la main.",
+      "price": 29.99,
+      "image": "assets/img/obelix.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Figurine Astérix",
+        "description": "Figurine de Astérix qui boit sa potion magique. En résine peinte à la main.",
+        "price": 25.99,
+        "image": "assets/img/asterix.jpg"
+      },
+    {
+        "id": 4,
+        "name": "Figurine Idéfix",
+        "description": "Petite figurine de Idéfix, le chien fidèle d'Obélix. En résine peinte à la main.",
+        "price": 12.99,
+        "image": "assets/img/idefix.jpg"
+      },
+    {
+      "id": 5,
+      "name": "Figurine Assurancetourix",
+      "description": "Figurine du barde Assurancetourix, avec sa lyre. En résine peinte à la main.",
+      "price": 19.99,
+      "image": "assets/img/assurancetourix.jpg"
+    }
+  ]
+  

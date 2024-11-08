@@ -3,12 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'] // Corrected to 'styleUrls'
+  styleUrls: ['./header.component.css'] 
 })
 export class HeaderComponent implements OnInit {
   
   ngOnInit(): void {
-    this.initApp();
+    if (typeof document !== 'undefined') {
+      this.initApp();
+    }
   }
 
   initApp(): void {
