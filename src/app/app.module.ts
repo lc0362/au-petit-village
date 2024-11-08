@@ -13,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
 import { MentionslegalesComponent } from './mentionslegales/mentionslegales.component';
+import { SortByPricePipe } from './sort-by-price.pipe';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { MentionslegalesComponent } from './mentionslegales/mentionslegales.comp
     FooterComponent,
     HeaderComponent,
     ContactComponent,
-    MentionslegalesComponent
+    MentionslegalesComponent,
+    SortByPricePipe
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule, 
     RouterModule, 
+    FormsModule,
   ],
   providers: [
     provideHttpClient(withFetch()),

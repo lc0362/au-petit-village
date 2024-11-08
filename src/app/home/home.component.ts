@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 export class HomeComponent implements OnInit {
   title = "Au Petit Village";
   products: any[] = [];
+  sortOrder = 'default'; // ordre par défaut
 
   constructor(private location: Location) {}
 
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      this.products = data; 
+      this.products = data;
     } catch (error) {
       console.error('Erreur lors du chargement des produits:', error);
     }
