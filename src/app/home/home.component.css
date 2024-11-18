@@ -1,0 +1,7 @@
+:host, label {
+    cursor: url('/assets/img/cursor.png'), auto;
+  }
+
+  button:hover, a:hover, select {
+    cursor: url('/assets/img/survol.png'), auto;
+}

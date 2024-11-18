@@ -5,9 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortByPricePipe implements PipeTransform {
   transform(products: any[], order: string): any[] {
-    if (!products || !order || order === 'default') {
-      return products; // pour l'ordre par défaut "notre sélection"
+    if (!products) {
+      return [];
     }
+
+    // Tri par défaut : ordre croissant d'ID
+    if (order === 'default') {
+      return products.sort((a, b) => a.id - b.id);
+    }
+
+    // Tri par prix
     return products.sort((a, b) => {
       if (order === 'ascending') {
         return a.price - b.price;
