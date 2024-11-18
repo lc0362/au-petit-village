@@ -14,11 +14,28 @@
 
       <div class="mb-4">
         <label for="sort" class="block mb-2">Trier par :</label>
-        <select id="sort" [(ngModel)]="sortOrder" class="p-4 border border-yellowapv bg-white rounded">
-          <option value="default">Notre sélection</option>
-          <option value="ascending">Prix croissant</option>
-          <option value="descending">Prix décroissant</option>
+        <select 
+        id="sort"
+        [(ngModel)]="sortOrder"
+        (ngModelChange)="updateProducts()"
+        class="p-4 border border-yellowapv bg-white rounded"
+      >
+        <option value="default">Notre sélection</option>
+        <option value="ascending">Prix croissant</option>
+        <option value="descending">Prix décroissant</option>
         </select>
+      </div>
+
+      <div class="mb-4">
+        <label for="search" class="block mb-2">Rechercher :</label>
+        <input
+        id="search"
+        type="text"
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="updateProducts()"
+        placeholder="Rechercher un produit..."
+        class="p-4 border border-yellowapv bg-white rounded w-full"
+        />
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
