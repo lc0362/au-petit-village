@@ -3,15 +3,75 @@
     <h1>{{ title }}</h1>
   </div>
 
+  <!-- Section FAQ -->
+  <div class="container mx-auto p-4">
+    <h2 class="text-3xl mb-5 text-redapv">Foire aux questions</h2>
+    <div class="space-y-4 text-center">
+      <!-- Question 1 -->
+      <!-- directive ngClass propre à Angular. Si réponse ouverte, alors la bordure est rouge -->
+      <!-- méthode toggle activée au click pour inverser l'état d'ouverture ou fermeture de la réponse -->
+      <!-- directive ngIf propre à Angular. La réponse s'affiche uniquement si l'état est true -->
+      <div class="border border-yellowapv rounded-lg p-4 cursor-pointer hover:border-redapv max-w-md md:max-w-4xl mx-auto" 
+      [ngClass]="{'border-yellowapv': !faqState[0], 'border-redapv': faqState[0]}" 
+      (click)="toggleFaq(0)">
+        <h3 class="text-lg font-medium mb-2">Les figurines sont-elles fabriquées en France ?</h3>
+        <p class="text-blackapv" *ngIf="faqState[0]">
+          Oui, toutes nos figurines sont fabriquées en France, dans un atelier artisanal qui respecte les normes environnementales.
+        </p>
+      </div>
+
+      <!-- Question 2 -->
+      <div class="border border-yellowapv rounded-lg p-4 cursor-pointer hover:border-redapv max-w-md md:max-w-4xl mx-auto" 
+      [ngClass]="{'border-yellowapv': !faqState[1], 'border-redapv': faqState[1]}"
+      (click)="toggleFaq(1)">
+        <h3 class="text-lg font-medium mb-2">Quels sont les délais de livraison ?</h3>
+        <p class="text-blackapv" *ngIf="faqState[1]">
+          Les délais de livraison sont généralement de 3 à 5 jours ouvrables après confirmation de votre commande.
+        </p>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="border border-yellowapv rounded-lg p-4 cursor-pointer hover:border-redapv max-w-md md:max-w-4xl mx-auto" 
+      [ngClass]="{'border-yellowapv': !faqState[2], 'border-redapv': faqState[2]}"
+      (click)="toggleFaq(2)">
+        <h3 class="text-lg font-medium mb-2">Puis-je retourner un produit si je ne suis pas satisfait ?</h3>
+        <p class="text-blackapv" *ngIf="faqState[2]">
+          Oui, vous disposez d'un délai de 14 jours après réception pour retourner un produit, à condition qu'il soit dans son état d'origine.
+        </p>
+      </div>
+
+      <!-- Question 4 -->
+      <div class="border border-yellowapv rounded-lg p-4 cursor-pointer hover:border-redapv max-w-md md:max-w-4xl mx-auto" 
+      [ngClass]="{'border-yellowapv': !faqState[3], 'border-redapv': faqState[3]}"
+      (click)="toggleFaq(3)">
+        <h3 class="text-lg font-medium mb-2">Proposez-vous des figurines personnalisées ?</h3>
+        <p class="text-blackapv" *ngIf="faqState[3]">
+          Actuellement, nous ne proposons pas de figurines personnalisées, mais cela pourrait être ajouté à l'avenir !
+        </p>
+      </div>
+
+      <!-- Question 5 -->
+      <div class="border border-yellowapv rounded-lg p-4 cursor-pointer hover:border-redapv max-w-md md:max-w-4xl mx-auto" 
+      [ngClass]="{'border-yellowapv': !faqState[4], 'border-redapv': faqState[4]}"
+      (click)="toggleFaq(4)">
+        <h3 class="text-lg font-medium mb-2">Comment puis-je suivre ma commande ?</h3>
+        <p class="text-blackapv" *ngIf="faqState[4]">
+          Une fois votre commande expédiée, vous recevrez un email avec un lien pour suivre votre colis en temps réel.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <div class="container mx-auto p-4">
     <h2 class="text-3xl mb-5 text-redapv">Formulaire de contact</h2>
 
     <form
-      #contactForm="ngForm"
-      (ngSubmit)="onSubmit()"
-      class="bg-white rounded-lg shadow p-6 max-w-md mx-auto"
-    >
-     
+    #contactForm="ngForm"
+    (ngSubmit)="onSubmit()"
+    class="bg-white rounded-lg shadow p-6 max-w-md md:max-w-4xl mx-auto"
+  >
+  <!-- directive ngModel permet de transformer un élément html form en un formulaire Angular réactif. Crée un objet de type ngForm qui gère la validation des champs -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <!-- Prénom -->
       <div class="mb-4">
         <label for="prenom" class="block text-sm font-medium mb-2">Prénom *</label>
@@ -21,13 +81,13 @@
           [(ngModel)]="formData.prenom"
           name="prenom"
           required
-          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          class="w-full p-3 border border-yellowapv rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
           placeholder="Jane"
         />
       </div>
 
-       <!-- Nom -->
-       <div class="mb-4">
+      <!-- Nom -->
+      <div class="mb-4">
         <label for="nom" class="block text-sm font-medium mb-2">Nom *</label>
         <input
           id="nom"
@@ -35,7 +95,7 @@
           [(ngModel)]="formData.nom"
           name="nom"
           required
-          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          class="w-full p-3 border border-yellowapv rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
           placeholder="Doe"
         />
       </div>
@@ -49,7 +109,7 @@
           [(ngModel)]="formData.telephone"
           name="telephone"
           required
-          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          class="w-full p-3 border border-yellowapv rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
           placeholder="0600000011"
         />
       </div>
@@ -63,21 +123,40 @@
           [(ngModel)]="formData.email"
           name="email"
           required
-          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          class="w-full p-3 border border-yellowapv rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
           placeholder="exemple@mail.fr"
         />
       </div>
+    </div>
 
-      <!-- Bouton Envoyer -->
-      <div class="text-center">
-        <button
-          type="submit"
-          [disabled]="!contactForm.valid"
-          class="p-3 bg-yellowapv rounded text-white font-medium hover:bg-redapv transition duration-300"
-        >
-          Envoyer
-        </button>
-      </div>
-    </form>
-  </div>
+    <!-- Votre message -->
+    <div class="mb-4">
+      <label for="message" class="block text-sm font-medium mb-2">Votre message *</label>
+      <textarea
+        id="message"
+        [(ngModel)]="formData.message"
+        name="message"
+        required
+        rows="4"
+        class="w-full p-3 border border-yellowapv rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+        placeholder="Écrivez votre message ici..."
+      ></textarea>
+    </div>
+
+    <!-- Message d'erreur -->
+    <p *ngIf="showError" class="text-redapv text-sm mb-4">
+      Tous les champs sont obligatoires.
+    </p>
+
+    <!-- Bouton Envoyer -->
+    <div class="text-center mt-4">
+      <button
+        type="submit"
+        class="p-2 my-2 bg-yellowapv rounded border-2 border-redapv hover:text-white hover:border-yellowapv hover:bg-redapv hover:scale-110 transition duration-300 ease-in-out"
+      >
+        Envoyer
+      </button>
+    </div>
+  </form>
+</div>
 </main>
