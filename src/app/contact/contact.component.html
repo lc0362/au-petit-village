@@ -1,5 +1,83 @@
 <main>
-    <div class="container mx-auto p-4">
-        <h1>{{title}}</h1>
+  <div class="container mx-auto p-4">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div class="container mx-auto p-4">
+    <h2 class="text-3xl mb-5 text-redapv">Formulaire de contact</h2>
+
+    <form
+      #contactForm="ngForm"
+      (ngSubmit)="onSubmit()"
+      class="bg-white rounded-lg shadow p-6 max-w-md mx-auto"
+    >
+     
+      <!-- Prénom -->
+      <div class="mb-4">
+        <label for="prenom" class="block text-sm font-medium mb-2">Prénom *</label>
+        <input
+          id="prenom"
+          type="text"
+          [(ngModel)]="formData.prenom"
+          name="prenom"
+          required
+          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          placeholder="Jane"
+        />
       </div>
+
+       <!-- Nom -->
+       <div class="mb-4">
+        <label for="nom" class="block text-sm font-medium mb-2">Nom *</label>
+        <input
+          id="nom"
+          type="text"
+          [(ngModel)]="formData.nom"
+          name="nom"
+          required
+          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          placeholder="Doe"
+        />
+      </div>
+
+      <!-- Téléphone -->
+      <div class="mb-4">
+        <label for="telephone" class="block text-sm font-medium mb-2">Téléphone *</label>
+        <input
+          id="telephone"
+          type="tel"
+          [(ngModel)]="formData.telephone"
+          name="telephone"
+          required
+          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          placeholder="0600000011"
+        />
+      </div>
+
+      <!-- Adresse Email -->
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium mb-2">Adresse Email *</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="formData.email"
+          name="email"
+          required
+          class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellowapv"
+          placeholder="exemple@mail.fr"
+        />
+      </div>
+
+      <!-- Bouton Envoyer -->
+      <div class="text-center">
+        <button
+          type="submit"
+          [disabled]="!contactForm.valid"
+          class="p-3 bg-yellowapv rounded text-white font-medium hover:bg-redapv transition duration-300"
+        >
+          Envoyer
+        </button>
+      </div>
+    </form>
+  </div>
 </main>
