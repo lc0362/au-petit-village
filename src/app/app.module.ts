@@ -14,7 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
 import { MentionslegalesComponent } from './mentionslegales/mentionslegales.component';
 import { SortByPricePipe } from './sort-by-price.pipe';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { FilterByNamePipe } from './filter-by-name.pipe'; 
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     ContactComponent,
     MentionslegalesComponent,
-    SortByPricePipe
+    SortByPricePipe,
+    FilterByNamePipe
   ],
   imports: [
     BrowserModule, 

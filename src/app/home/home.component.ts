@@ -4,14 +4,14 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  title = "Au Petit Village";
-  allProducts: any[] = []; // Tous les produits non filtrés
-  products: any[] = []; // Produits filtrés affichés
-  sortOrder = 'default'; // Ordre par défaut
-  searchQuery = ''; // Requête de recherche
+  title = 'Au Petit Village';
+  allProducts: any[] = [];
+  products: any[] = [];
+  sortOrder = 'default';
+  searchQuery = '';
 
   constructor(private location: Location) {}
 
@@ -22,25 +22,18 @@ export class HomeComponent implements OnInit {
   async getProducts() {
     try {
       const url = this.location.prepareExternalUrl('assets/products.json');
+      console.log('URL utilisée pour les produits :', url);
       const response = await fetch(url);
+
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
       const data = await response.json();
-      this.allProducts = data;
-      this.updateProducts(); // Initialiser les produits affichés
+      console.log('Produits récupérés :', data);
+      this.products = data; // Remplit directement les produits
     } catch (error) {
       console.error('Erreur lors du chargement des produits:', error);
     }
-  }
-
-  updateProducts() {
-    // Filtrer par recherche
-    let filteredProducts = this.allProducts.filter((product) =>
-      product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
-
-    // Appliquer le tri
-    this.products = [...filteredProducts]; // Copie pour éviter de modifier allProducts
   }
 }

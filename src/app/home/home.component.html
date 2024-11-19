@@ -1,53 +1,57 @@
-  <main class="main">
-    <div class="container mx-auto p-4">
-    <h1>{{title}}</h1>
-     </div>
+<main class="main">
+  <div class="container mx-auto p-4">
+  <h1>{{title}}</h1>
+   </div>
 
-     <div class="container mx-auto p-4 text-center bg-[#FDD90B]">
-     <p>Plongez dans l'univers des irréductibles Gaulois grâce à nos <strong>figurines artisanales</strong>, conçues avec passion et minutie. </p>
-      <p>Que vous soyez un nostalgique des aventures d'Astérix et Obélix ou un collectionneur en quête d'authenticité, chaque pièce raconte une histoire. </p>
-      <p>Découvrez notre sélection exclusive et laissez-vous emporter par l'esprit des célèbres Gaulois !</p>
+    <div class="container mx-auto p-4 text-center bg-[#FDD90B] rounded-lg shadow-lg">
+
+   <p>Plongez dans l'univers des irréductibles Gaulois grâce à nos <strong>figurines artisanales</strong>, conçues avec passion et minutie. </p>
+    <p>Que vous soyez un nostalgique des aventures d'Astérix et Obélix ou un collectionneur en quête d'authenticité, chaque pièce raconte une histoire. </p>
+    <p>Découvrez notre sélection exclusive et laissez-vous emporter par l'esprit des célèbres Gaulois !</p>
+  </div>
+
+  <div class="container mx-auto p-4 ">
+    
+    <h2 class="text-3xl mb-6 text-redapv">Catalogue</h2>
+
+    <div class="mb-4">
+      <label for="sort" class="block mb-2">Trier par :</label>
+      <select 
+      id="sort"
+      [(ngModel)]="sortOrder"
+      class="p-4 border border-yellowapv bg-white rounded"
+    >
+      <option value="default">Notre sélection</option>
+      <option value="ascending">Prix croissant</option>
+      <option value="descending">Prix décroissant</option>
+      </select>
     </div>
 
-    <div class="container mx-auto p-4 ">
-      <h2 class="text-3xl mb-6 text-redapv">Catalogue</h2>
-
-      <div class="mb-4">
-        <label for="sort" class="block mb-2">Trier par :</label>
-        <select 
-        id="sort"
-        [(ngModel)]="sortOrder"
-        (ngModelChange)="updateProducts()"
-        class="p-4 border border-yellowapv bg-white rounded"
-      >
-        <option value="default">Notre sélection</option>
-        <option value="ascending">Prix croissant</option>
-        <option value="descending">Prix décroissant</option>
-        </select>
-      </div>
-
-      <div class="mb-4">
-        <label for="search" class="block mb-2">Rechercher :</label>
-        <input
+       <div class="mb-4">
+      <label for="search" class="block mb-2">Rechercher :</label>
+      <input
         id="search"
         type="text"
         [(ngModel)]="searchQuery"
-        (ngModelChange)="updateProducts()"
-        placeholder="Rechercher un produit..."
+        placeholder="Rechercher une figurine..."
         class="p-4 border border-yellowapv bg-white rounded w-full"
-        />
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div *ngFor="let product of products | sortByPrice: sortOrder" class="bg-white rounded-lg shadow p-4 text-center group">
-          <img [src]="product.image" [alt]="product.name" class="mb-4 rounded">
-          <h3 class="text-xl group-hover:text-redapv transition duration-300 ease-in-out">{{ product.name }}</h3>
-          <p class="my-2">{{ product.description }}</p>
-          <p>{{ product.price }} €</p>
-          <button class="p-2 my-2 bg-yellowapv rounded border-2 border-redapv hover:text-white hover:border-yellowapv hover:bg-redapv hover:scale-110 transition duration-300 ease-in-out"> Voir le produit</button>
-        </div>
-      </div>
-    
+      />
     </div>
-  </main>
+
+    <div *ngIf="(products | filterByName: searchQuery | sortByPrice: sortOrder).length === 0" class="text-center mt-12">
+      <p class="text-redapv">Aucun produit ne correspond à votre recherche.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div *ngFor="let product of products | filterByName: searchQuery | sortByPrice: sortOrder" class="bg-white rounded-lg shadow p-4 text-center group">
+        <img [src]="product.image" [alt]="product.name" class="mb-4 rounded">
+        <h3 class="text-xl group-hover:text-redapv transition duration-300 ease-in-out">{{ product.name }}</h3>
+        <p class="my-2">{{ product.description }}</p>
+        <p>{{ product.price }} €</p>
+        <button class="p-2 my-2 bg-yellowapv rounded border-2 border-redapv hover:text-white hover:border-yellowapv hover:bg-redapv hover:scale-110 transition duration-300 ease-in-out"> Voir le produit</button>
+      </div>
+    </div>
   
+  </div>
+</main>
+
