@@ -41,26 +41,68 @@
       </div>
   </div>
 
-  <!-- Modale -->
-  <div
-    *ngIf="isModalOpen"
-    class="fixed inset-0 bg-blackapv bg-opacity-75 flex items-center justify-center z-50"
-  >
-    <div class="rounded-lg shadow-lg cursor-zoom-out relative "
+<!-- Modale -->
+<div
+  *ngIf="isModalOpen"
+  class="fixed inset-0 bg-blackapv bg-opacity-75 flex items-center justify-center z-50"
+>
+  <div 
+    class="rounded-lg shadow-lg cursor-zoom-out relative"
     (click)="closeModal()"
+  >
+    <button 
+      class="absolute right-2 top-2 text-blackapv text-8xl font-bold z-60 hover:scale-110 transition duration-300 ease-in-out md:text-6xl"
+      (click)="closeModal()"
     >
-      <button 
-      class="absolute right-2 top-2 text-blackapv text-8xl font-bold z-60  hover:scale-110 transition duration-300 ease-in-out md:text-6xl"
-        (click)="closeModal()"
-      >
-        &times; <!-- Bouton de fermeture -->
-      </button>
-      <img 
-        src="assets/img/asterix.jpg" 
-        alt="Figurine Astérix agrandie" 
-        class="rounded-lg w-full"
-      />
-    </div>
+      &times; <!-- Bouton de fermeture -->
+    </button>
+    <img 
+      src="assets/img/asterix.jpg" 
+      alt="Image de la figurine Astérix agrandie" 
+      class="rounded-lg w-full"
+    />
   </div>
+</div>
+
+<!-- Section "Vous pourriez aussi aimer..." -->
+<div class="container mx-auto p-4 mt-10">
+  <h2 class="text-2xl font-semibold text-redapv mb-4">Vous pourriez aussi aimer...</h2>
+
+  <div class="flex items-center gap-4">
+
+    <!-- Flèche gauche -->
+<button 
+class="text-blackapv text-4xl font-bold hover:scale-110 transition duration-300 ease-in-out"
+(click)="previousProducts()"
+>
+&#8592;
+</button>
+
+    <!-- Produits affichés -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 md:max-w-7xl md:max-h-[500px] overflow-y-auto">
+      <div *ngFor="let product of displayedProducts" class="bg-white rounded-lg shadow p-4 text-center group cursor-pointer">
+        <img 
+          [src]="product.image" 
+          [alt]="product.name" 
+          class="mb-4 rounded h-[300px] w-auto mx-auto"
+        />
+        <h3 class="text-xl group-hover:text-redapv transition duration-300 ease-in-out">{{ product.name }}</h3>
+        <p class="my-2">{{ product.price }} €</p>
+      </div>
+    </div>
+
+    <!-- Flèche droite -->
+    <button 
+      class="text-blackapv text-4xl font-bold hover:scale-210 transition duration-300 ease-in-out"
+      (click)="nextProducts()"
+    >
+    &#x2192;
+    </button>
+  </div>
+</div>
+
+
+
+
 
 </main>

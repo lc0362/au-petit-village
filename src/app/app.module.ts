@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -15,7 +13,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MentionslegalesComponent } from './mentionslegales/mentionslegales.component';
 import { SortByPricePipe } from './sort-by-price.pipe';
 import { FormsModule } from '@angular/forms';
-import { FilterByNamePipe } from './filter-by-name.pipe'; 
+import { FilterByNamePipe } from './filter-by-name.pipe';
 
 @NgModule({
   declarations: [
@@ -28,18 +26,18 @@ import { FilterByNamePipe } from './filter-by-name.pipe';
     ContactComponent,
     MentionslegalesComponent,
     SortByPricePipe,
-    FilterByNamePipe
+    FilterByNamePipe,
   ],
   imports: [
-    BrowserModule, 
-    AppRoutingModule, 
-    RouterModule, 
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
     FormsModule,
   ],
   providers: [
-    provideHttpClient(withFetch()),
-    provideClientHydration(),
+    provideHttpClient(withFetch()), 
+    provideClientHydration(), 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
