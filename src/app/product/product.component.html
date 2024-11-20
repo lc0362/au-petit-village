@@ -1,5 +1,66 @@
 <main>
-    <div class="container mx-auto p-4">
-        <h1>{{title}}</h1>
+  <div class="container mx-auto p-4">
+      <h1>{{title}}</h1>
+  </div>
+  <div class="container mx-auto p-4 bg-white rounded-lg shadow-lg">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Image de la figurine -->
+          <div>
+              <img 
+              src="assets/img/asterix.jpg"
+              alt="Figurine Astérix"
+              class="rounded-lg w-full cursor-zoom-in"
+              (click)="openModal('assets/img/asterix.jpg')"
+           />
+          </div>
+      
+          <!-- Détails du produit -->
+          <div class="flex flex-col items-center justify-center">
+              <h2 class="text-3xl mb-5 text-redapv text-center">Figurine Astérix</h2>
+              <p class="text-lg font-semibold text-blackapv mb-6 text-center">Prix : 24,99 €</p>
+      
+              <!-- Bouton d'achat -->
+              <button 
+                class="p-2 my-2 bg-yellowapv rounded border-2 border-redapv hover:text-white hover:border-yellowapv hover:bg-redapv hover:scale-110 transition duration-300 ease-in-out"
+              >
+                Ajouter au panier
+              </button>
+      
+              <h3 class="text-2xl font-semibold text-blackapv mb-4 pt-12 text-left w-full">Description</h3>
+              <p class="text-gray-700 text-left w-full">
+                Astérix, le héros courageux et rusé, est immortalisé dans cette figurine exceptionnelle.
+                Chaque détail a été soigneusement travaillé pour capturer son esprit d'aventure et sa personnalité unique.
+                Idéal pour les collectionneurs ou les amateurs des aventures d'Astérix et Obélix.
+              </p>
+      
+              <h3 class="text-2xl font-semibold text-blackapv mb-4 pt-12 text-left w-full">Composition</h3>
+              <p class="text-gray-700 text-left w-full">
+                Résine, peinture acrylique.
+              </p>
+          </div>
       </div>
+  </div>
+
+  <!-- Modale -->
+  <div
+    *ngIf="isModalOpen"
+    class="fixed inset-0 bg-blackapv bg-opacity-75 flex items-center justify-center z-50"
+  >
+    <div class="rounded-lg shadow-lg cursor-zoom-out relative "
+    (click)="closeModal()"
+    >
+      <button 
+      class="absolute right-2 top-2 text-blackapv text-8xl font-bold z-60  hover:scale-110 transition duration-300 ease-in-out md:text-6xl"
+        (click)="closeModal()"
+      >
+        &times; <!-- Bouton de fermeture -->
+      </button>
+      <img 
+        src="assets/img/asterix.jpg" 
+        alt="Figurine Astérix agrandie" 
+        class="rounded-lg w-full"
+      />
+    </div>
+  </div>
+
 </main>

@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-title="Produit"
+title="Figurine";
+isModalOpen = false; // État de la modal par défaut
+currentImage = ''; // Image à afficher dans la modal
+
+openModal(image: string) {
+  this.isModalOpen = true;
+  this.currentImage = image;
+}
+
+closeModal() {
+  this.isModalOpen = false;
+  this.currentImage = '';
+}
 }
