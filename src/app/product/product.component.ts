@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'; 
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,24 +9,33 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductComponent implements OnInit {
   title = 'Figurine';
-  isModalOpen = false; // État de la modal par défaut
-  currentImage = ''; // Image à afficher dans la modal, valeur initiale
+  isModalOpen = false; 
+  currentImage = ''; 
+  currentProduct: any = null; 
+  relatedProducts: any[] = []; 
+  displayedProducts: any[] = []; 
+  currentIndex = 0; 
 
-  currentProductId = 1; // ID du produit actuel
-  relatedProducts: any[] = []; // Tous les produits liés
-  displayedProducts: any[] = []; // Produits actuellement affichés
-  currentIndex = 0; // Index de départ pour l'affichage des produits
-
-  constructor(private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.loadProducts();
+    // Récupère l'ID depuis l'URL et charge le produit correspondant
+    this.route.paramMap.subscribe((params) => {
+      const productId = +params.get('id')!; // Converti en nombre
+      this.loadProduct(productId);
+    });
   }
 
-  // Chargement des produits depuis products.json
-  loadProducts(): void {
+  // Charge le produit et les produits recommandés
+  loadProduct(productId: number): void {
     this.http.get<any[]>('assets/products.json').subscribe((products) => {
-      this.relatedProducts = products.filter((product) => product.id !== this.currentProductId);
+      // Trouver le produit correspondant
+      this.currentProduct = products.find((product) => product.id === productId);
+
+      // Filtrer les produits sans le produit actuellement affiché
+      this.relatedProducts = products.filter((product) => product.id !== productId);
+
+      // Mettre à jour l'affichage des produits recommandés
       this.updateDisplayedProducts();
     });
   }
@@ -40,9 +50,9 @@ export class ProductComponent implements OnInit {
     this.currentImage = '';
   }
 
-  // Mise à jour des produits affichés
+  // Met à jour les produits recommandés affichés
   updateDisplayedProducts(): void {
-    const productsPerView = window.innerWidth <= 768 ? 1 : 2; // 1 produit ou 2 à partir de la taille tablette
+    const productsPerView = window.innerWidth <= 768 ? 1 : 2; // 1 produit ou 2 selon la taille de l'écran
     this.displayedProducts = this.relatedProducts.slice(
       this.currentIndex,
       this.currentIndex + productsPerView
@@ -56,20 +66,17 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  // Affiche le produit suivant
+  // Passe au produit suivant
   nextProducts(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.relatedProducts.length; // Avancer de 1 au clic
+    this.currentIndex = (this.currentIndex + 1) % this.relatedProducts.length;
     this.updateDisplayedProducts();
   }
 
-  // Affiche le produit précédent
+  // Passe au produit précédent
   previousProducts(): void {
-    const productsPerView = window.innerWidth <= 768 ? 1 : 2; // 1 produit ou 2 à partir de la taille tablette
-
-    // Recule de `productsPerView` dans l'index
+    const productsPerView = window.innerWidth <= 768 ? 1 : 2;
     this.currentIndex =
       (this.currentIndex - productsPerView + this.relatedProducts.length) % this.relatedProducts.length;
-
     this.updateDisplayedProducts();
   }
 }

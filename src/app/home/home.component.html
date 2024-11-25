@@ -49,9 +49,9 @@
         <p class="my-2">{{ product.description }}</p>
         <p>{{ product.price }} €</p>
         
-        <button *ngIf="product.id === 1; else defaultButton"
+        <button 
   class="p-2 my-2 bg-yellowapv rounded border-2 border-redapv hover:text-white hover:border-yellowapv hover:bg-redapv hover:scale-110 transition duration-300 ease-in-out"
-  [routerLink]="['/product']">Voir le produit</button>
+  [routerLink]="['/product', product.id]">Voir le produit</button>
 
 <ng-template #defaultButton>
   <button class="p-2 my-2 bg-yellowapv rounded border-2 border-redapv hover:text-white hover:border-yellowapv hover:bg-redapv hover:scale-110 transition duration-300 ease-in-out">Voir le produit
