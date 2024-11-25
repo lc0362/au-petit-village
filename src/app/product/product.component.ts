@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; 
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   title = 'Figurine';
   isModalOpen = false; 
   currentImage = ''; 
@@ -19,23 +19,28 @@ export class ProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Récupère l'ID depuis l'URL et charge le produit correspondant
     this.route.paramMap.subscribe((params) => {
-      const productId = +params.get('id')!; // Converti en nombre
+      const productId = +params.get('id')!;
       this.loadProduct(productId);
     });
+
+    window.addEventListener('resize', () => this.updateDisplayedProducts());
   }
 
-  // Charge le produit et les produits recommandés
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', () => this.updateDisplayedProducts());
+  }
+
   loadProduct(productId: number): void {
     this.http.get<any[]>('assets/products.json').subscribe((products) => {
-      // Trouver le produit correspondant
       this.currentProduct = products.find((product) => product.id === productId);
 
-      // Filtrer les produits sans le produit actuellement affiché
-      this.relatedProducts = products.filter((product) => product.id !== productId);
+      if (!this.currentProduct) {
+        console.error(`Produit avec l'ID ${productId} introuvable.`);
+        return;
+      }
 
-      // Mettre à jour l'affichage des produits recommandés
+      this.relatedProducts = products.filter((product) => product.id !== productId);
       this.updateDisplayedProducts();
     });
   }
@@ -50,15 +55,13 @@ export class ProductComponent implements OnInit {
     this.currentImage = '';
   }
 
-  // Met à jour les produits recommandés affichés
   updateDisplayedProducts(): void {
-    const productsPerView = window.innerWidth <= 768 ? 1 : 2; // 1 produit ou 2 selon la taille de l'écran
+    const productsPerView = window.innerWidth <= 768 ? 1 : 2;
     this.displayedProducts = this.relatedProducts.slice(
       this.currentIndex,
       this.currentIndex + productsPerView
     );
 
-    // Si moins de produits disponibles, compléter avec le début
     if (this.displayedProducts.length < productsPerView) {
       this.displayedProducts = this.displayedProducts.concat(
         this.relatedProducts.slice(0, productsPerView - this.displayedProducts.length)
@@ -66,13 +69,11 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  // Passe au produit suivant
   nextProducts(): void {
     this.currentIndex = (this.currentIndex + 1) % this.relatedProducts.length;
     this.updateDisplayedProducts();
   }
 
-  // Passe au produit précédent
   previousProducts(): void {
     const productsPerView = window.innerWidth <= 768 ? 1 : 2;
     this.currentIndex =

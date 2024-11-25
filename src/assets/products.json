@@ -2,40 +2,45 @@
   {
     "id": 1,
     "name": "Figurine Astérix",
-    "description": "Figurine de Astérix qui boit sa potion magique. En résine peinte à la main.",
+    "description": "Figurine de Astérix qui boit sa potion magique.",
     "descriptionlongue": "Astérix, le héros courageux et rusé, est immortalisé dans cette figurine exceptionnelle. Chaque détail a été soigneusement travaillé pour capturer son esprit d'aventure et sa personnalité unique. Idéal pour les collectionneurs ou les amateurs des aventures d'Astérix et Obélix.",
+    "composition": "Résine, peinture acrylique.",
     "price": 24.99,
     "image": "assets/img/asterix.jpg"
   },  
   {
     "id": 2,
     "name": "Figurine Obélix",
-    "description": "Figurine de Obélix, impatient d'aller combattre les romains. En résine peinte à la main.",
+    "description": "Figurine de Obélix, impatient d'aller combattre les romains.",
     "descriptionlongue": "Obélix, le fidèle compagnon d'Astérix, est représenté avec toute sa force légendaire et son humour attachant. Cette figurine met en valeur sa célèbre corpulence et son inséparable menhir. Chaque détail, du sourire jovial à sa tenue rayée, a été minutieusement réalisé pour capturer son essence. Parfaite pour les amateurs de personnages emblématiques et les fans de l'univers d'Astérix.",
+    "composition": "Résine, peinture acrylique.",
     "price": 25.99,
     "image": "assets/img/obelix.jpg"
   },
   {
     "id": 3,
     "name": "Figurine Idéfix",
-    "description": "Petite figurine de Idéfix, le chien fidèle d'Obélix. En résine peinte à la main.",
+    "description": "Petite figurine de Idéfix, le chien fidèle d'Obélix.",
     "descriptionlongue": "Idéfix, le petit chien fidèle d'Obélix, est incarné dans cette adorable figurine pleine de charme. Son regard malin et ses oreilles pointues reflètent sa personnalité attachante et son courage, malgré sa petite taille. Une pièce idéale pour les amoureux des animaux et pour tous ceux qui apprécient la touche humoristique qu'il apporte à l'univers gaulois.",
+    "composition": "Résine, peinture acrylique, moustache.",
     "price": 12.99,
     "image": "assets/img/idefix.jpg"
   },
   {
         "id": 4,
         "name": "Figurine Panoramix",
-        "description": "Figurine du druide Panoramix avec son chaudron magique. En résine peinte à la main.",
+        "description": "Figurine du druide Panoramix avec son chaudron magique.",
         "descriptionlongue": "Panoramix, le druide sage et respecté du village gaulois, est capturé dans cette figurine magistrale. Tenant son chaudron magique, il semble prêt à préparer la fameuse potion qui donne une force surhumaine. Chaque élément, de sa barbe blanche majestueuse à sa robe de druide, a été conçu avec une précision artisanale. Un ajout incontournable pour les collectionneurs et les fans de l'univers magique d'Astérix.",
+        "composition": "Résine, peinture acrylique.",
         "price": 29.99,
         "image": "assets/img/panoramix.jpg"
       },
   {
     "id": 5,
     "name": "Figurine Assurancetourix",
-    "description": "Figurine du barde Assurancetourix, avec sa lyre. En résine peinte à la main.",
+    "description": "Figurine du barde Assurancetourix, avec sa lyre.",
     "descriptionlongue": "Assurancetourix, le barde souvent incompris, prend vie dans cette figurine amusante et pleine de détails. Représenté avec sa lyre, il semble prêt à chanter ses compositions... même si elles risquent de ne pas plaire à tout le monde. Sa tenue colorée et son attitude confiante sont minutieusement sculptées, faisant de cette figurine un hommage parfait à ce personnage inoubliable et hilarant.",
+    "composition": "Résine, peinture acrylique.",
     "price": 19.99,
     "image": "assets/img/assurancetourix.jpg"
   }

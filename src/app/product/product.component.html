@@ -33,9 +33,32 @@
 
         <h3 class="text-2xl font-semibold text-blackapv mb-4 pt-12 text-left w-full">Composition</h3>
         <p class="text-gray-700 text-left w-full">
-          Résine, peinture acrylique.
+          {{ currentProduct.composition }}
         </p>
       </div>
+    </div>
+  </div>
+
+  <!-- Modale -->
+  <div
+    *ngIf="isModalOpen"
+    class="fixed inset-0 bg-blackapv bg-opacity-75 flex items-center justify-center z-50"
+  >
+    <div 
+      class="rounded-lg shadow-lg cursor-zoom-out relative"
+      (click)="closeModal()"
+    >
+      <button 
+        class="absolute right-2 top-2 text-blackapv text-8xl font-bold z-60 hover:scale-110 transition duration-300 ease-in-out md:text-6xl"
+        (click)="closeModal()"
+      >
+        &times; <!-- Bouton de fermeture -->
+      </button>
+      <img 
+        [src]="currentImage" 
+        [alt]="currentProduct.name" 
+        class="rounded-lg w-full"
+      />
     </div>
   </div>
 
@@ -55,12 +78,10 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
         <div *ngFor="let product of displayedProducts" class="bg-white rounded-lg shadow p-4 text-center group">
           <a [routerLink]="['/product', product.id]">
-          <img [src]="product.image" [alt]="product.name" class="mb-4 rounded h-[300px] w-auto mx-auto" />
-        </a>
-        <a [routerLink]="['/product', product.id]" class="block">
-          <h3 class="text-xl group-hover:text-redapv transition duration-300 ease-in-out" >{{ product.name }}</h3>
+            <img [src]="product.image" [alt]="product.name" class="mb-4 rounded h-[300px] w-auto mx-auto" />
+            <h3 class="text-xl group-hover:text-redapv transition duration-300 ease-in-out">{{ product.name }}</h3>
+          </a>
           <p class="my-2">{{ product.price }} €</p>
-        </a>
         </div>
       </div>
 
